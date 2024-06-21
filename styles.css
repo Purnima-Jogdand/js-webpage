@@ -1,0 +1,179 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  display: block;
+}
+
+.nav-links a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+.cart {
+  display: flex; /* Ensure cart container is flex */
+  align-items: center; /* Center items vertically */
+  margin-left: auto; /* Push to the right */
+}
+
+.cart a {
+  display: flex; /* Ensure cart link is flex */
+  align-items: center; /* Center items vertically */
+  position: relative; /* Position badge relative to icon */
+}
+
+.cart .icon {
+  font-size: 1.2em;
+}
+
+.cart .badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8em;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    top: 0;
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links a {
+    font-size: 1.2em;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .logo {
+    order: 1;
+    margin: 0 auto;
+  }
+
+  .cart {
+    order: 3; /* Ensure cart is at the end */
+    margin-right: 10px; /* Add some margin */
+  }
+
+  .hamburger {
+    order: 0;
+  }
+}
+.container {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+.left-container {
+  width: 25%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.right-container {
+  width: 75%;
+  background-color: #ccc;
+  padding: 20px;
+}
+.square {
+  width: auto;
+  height: 100px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+.breadcrumb {
+  margin: 7px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
