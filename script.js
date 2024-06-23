@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const productList = document.querySelector(".product-list");
   const productItemTemplate = document.querySelector(".product-item");
-
   const prevButton = document.getElementById("prev-button");
   const nextButton = document.getElementById("next-button");
   const pageInfo = document.getElementById("page-info");
@@ -33,17 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryFilters = document.querySelectorAll(
     ".category-filters input[type='checkbox']"
   );
+  const itemCount = document.getElementById("item-count");
 
   let products = [];
+  let filteredProducts = [];
   let currentPage = 1;
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
+
+  const updateItemCount = () => {
+    itemCount.textContent = `${filteredProducts.length} Results`;
+  };
 
   const loadProducts = (page) => {
     productList.innerHTML = "";
 
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedProducts = products.slice(start, end);
+    const paginatedProducts = filteredProducts.slice(start, end);
 
     paginatedProducts.forEach((product) => {
       const productItem = productItemTemplate.cloneNode(true);
@@ -70,28 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
       productList.appendChild(productItem);
     });
+
     pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(
-      products.length / itemsPerPage
+      filteredProducts.length / itemsPerPage
     )}`;
   };
+
   const updatePaginationControls = () => {
     prevButton.disabled = currentPage === 1;
     nextButton.disabled =
-      currentPage === Math.ceil(products.length / itemsPerPage);
+      currentPage === Math.ceil(filteredProducts.length / itemsPerPage);
   };
+
   const sortProducts = (sortValue) => {
     switch (sortValue) {
       case "price-asc":
-        products.sort((a, b) => a.price - b.price);
+        filteredProducts.sort((a, b) => a.price - b.price);
         break;
       case "price-desc":
-        products.sort((a, b) => b.price - a.price);
+        filteredProducts.sort((a, b) => b.price - a.price);
         break;
       case "title-asc":
-        products.sort((a, b) => a.title.localeCompare(b.title));
+        filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
         break;
       case "title-desc":
-        products.sort((a, b) => b.title.localeCompare(a.title));
+        filteredProducts.sort((a, b) => b.title.localeCompare(a.title));
         break;
       default:
         // Default sort order (if any)
@@ -101,29 +109,37 @@ document.addEventListener("DOMContentLoaded", () => {
     updatePaginationControls();
   };
 
-  const filterProducts = (searchTerm) => {
-    products = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const filterProducts = () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedCategories = Array.from(categoryFilters)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    filteredProducts = products.filter((product) => {
+      const matchesSearch = product.title.toLowerCase().includes(searchTerm);
+      const matchesCategory =
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(product.category);
+      return matchesSearch && matchesCategory;
+    });
+
+    updateItemCount();
     currentPage = 1;
     loadProducts(currentPage);
     updatePaginationControls();
   };
 
-  searchInput.addEventListener("input", (event) => {
-    const searchTerm = event.target.value;
-    if (searchTerm === "") {
-      loadProducts(currentPage);
-      updatePaginationControls();
-    } else {
-      filterProducts(searchTerm);
-    }
-  });
+  searchInput.addEventListener("input", filterProducts);
 
   sortSelect.addEventListener("change", (event) => {
     const sortValue = event.target.value;
     sortProducts(sortValue);
   });
+
+  categoryFilters.forEach((checkbox) => {
+    checkbox.addEventListener("change", filterProducts);
+  });
+
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
@@ -131,20 +147,21 @@ document.addEventListener("DOMContentLoaded", () => {
       updatePaginationControls();
     }
   });
+
   nextButton.addEventListener("click", () => {
-    if (currentPage < Math.ceil(products.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(filteredProducts.length / itemsPerPage)) {
       currentPage++;
       loadProducts(currentPage);
       updatePaginationControls();
     }
   });
-  categoryFilters.forEach((checkbox) => {
-    checkbox.addEventListener("change", filterProducts);
-  });
+
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
       products = data;
+      filteredProducts = products;
+      updateItemCount();
       loadProducts(currentPage);
       updatePaginationControls();
     })

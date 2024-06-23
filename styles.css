@@ -248,3 +248,13 @@ body {
 .category-filters label {
   margin-bottom: 5px;
 }
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+}

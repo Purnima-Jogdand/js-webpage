@@ -1,103 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Webpage</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="hamburger">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-        <div class="logo">VENIA</div>
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Women</a></li>
-          <li><a href="#">Men</a></li>
-          <li><a href="#">Smart Gear</a></li>
-          <li><a href="#">Accesories</a></li>
-        </ul>
-        <div class="cart">
-          <a href="#">
-            <span class="icon">🛒</span>
-            <span class="badge">3</span>
-          </a>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div class="container">
 
-        <div class="left-container">
-          <div class="square">
-            <h1>
-              Men's <br />
-              Outerwear
-            </h1>
-          </div>
-          <div class="breadcrumb">
-            <a href="#">Cloting</a> / <a href="#">Men's</a> /
-            <a href="#">Outerwear</a>
-          </div>
-          
-          
-          <div class="category-filters">
-            <label >filters</label><hr>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Webpage</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="logo">VENIA</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Smart Gear</a></li>
+        <li><a href="#">Accesories</a></li>
+      </ul>
+      <div class="cart">
+        <a href="#">
+          <span class="icon">🛒</span>
+          <span class="badge">3</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+
+      <div class="left-container">
+        <div class="square">
+          <h1>
+            Men's <br />
+            Outerwear
+          </h1>
+        </div>
+        <div class="breadcrumb">
+          <a href="#">Cloting</a> / <a href="#">Men's</a> /
+          <a href="#">Outerwear</a>
+        </div>
+
+
+        <div class="category-filters">
+          <label>filters</label>
+          <hr>
           <label><input type="checkbox" value="men's clothing" /> Men's Clothing</label>
           <label><input type="checkbox" value="women's clothing" /> Women's Clothing</label>
           <label><input type="checkbox" value="jewelery" /> Jewelery</label>
           <label><input type="checkbox" value="electronics" /> Electronics</label>
           <hr>
         </div>
-        </div>
-        <div class="right-container">
-            
-          <div class="brand-image">
-            <h1>
-              Men's <br />
-              Outerwear catlog
-            </h1>
-                     <div class="container">
-      <!-- Other content here -->
-      <div class="filters">
-        <input type="text" id="search-input" placeholder="Search products..." />
-        <select id="sort-select">
-          <option value="default">Sort by</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="title-asc">Title: A-Z</option>
-          <option value="title-desc">Title: Z-A</option>
-        </select>
       </div>
- 
- 
-    </div>
-                <div class="product-list">
-                <!-- Product item template -->
-              
+      <div class="right-container">
 
-                 <div class="product-item" >
+        <div class="brand-image">
+          <h1>
+            Men's <br />
+            Outerwear catlog
+          </h1>
+          <div class="container">
+            <!-- Other content here -->
+            <div class="filters">
+              <input type="text" id="search-input" placeholder="Search products..." />
+              <select id="sort-select">
+                <option value="default">Sort by</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="title-asc">Title: A-Z</option>
+                <option value="title-desc">Title: Z-A</option>
+              </select>
+            </div>
+
+
+          </div>
+          <h1 id="item-count"></h1>
+          <div class="product-list">
+            <!-- Product item template -->
+
+
+            <div class="product-item">
               <img src="" alt="Product Image" class="product-image">
               <h3 class="title"></h3>
             </div>
-                <!-- End of product item template -->
-            </div>
-                 <div class="pagination-controls">
-        <button id="prev-button">Previous</button>
-        <span id="page-info"></span>
-        <button id="next-button">Next</button>
-      </div>
+            <!-- End of product item template -->
+          </div>
+          <div class="pagination-controls">
+            <button id="prev-button">Previous</button>
+            <span id="page-info"></span>
+            <button id="next-button">Next</button>
+          </div>
         </div>
       </div>
-    </main>
-    <footer>
-      <p>&copy; 2024 My Simple Webpage</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  </main>
+  <footer>
+    <p>&copy; 2024 My Simple Webpage</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>
