@@ -28,29 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((products) => {
-      // Remove the template product item
-      productItemTemplate.remove();
+      productItemTemplate.remove(); // Remove the template item
 
       products.forEach((product) => {
-        // Clone the template product item
         const productItem = productItemTemplate.cloneNode(true);
-
-        // Update the placeholders with product data
         productItem.querySelector(".product-image").src = product.image;
-        // productItem.querySelector(".title").alt = product.title;
         productItem.querySelector(".title").textContent = product.title;
-        // productItem.querySelector(".price").textContent = `$${product.price}`;
-        // productItem.querySelector(".description").textContent =
-        //   product.description;
-        // productItem.querySelector(".category").textContent = product.category;
-        // productItem.querySelector(
-        //   ".rate"
-        // ).textContent = `⭐ ${product.rating.rate}`;
-        // productItem.querySelector(
-        //   ".count"
-        // ).textContent = `(${product.rating.count} reviews)`;
 
-        // // Append the updated product item to the product list
+        productItem.setAttribute("data-title", product.title);
+        productItem.setAttribute("data-description", product.description);
+        productItem.setAttribute("data-price", product.price);
+
+        productItem
+          .querySelector(".product-image")
+          .addEventListener("click", () => {
+            const productInfo = {
+              title: product.title,
+              description: product.description,
+              price: product.price,
+              imageSrc: product.image,
+            };
+
+            localStorage.setItem("productInfo", JSON.stringify(productInfo));
+            window.location.href = "product-details.html";
+          });
+
         productList.appendChild(productItem);
       });
     })

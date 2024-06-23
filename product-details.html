@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">VENIA</div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Smart Gear</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+        <div class="cart">
+          <a href="#">
+            <span class="icon">🛒</span>
+            <span class="badge">3</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="product-details">
+        <div class="product-details-item">
+          <img
+            height="300"
+            width="300"
+            id="product-image"
+            src=""
+            alt="Product Image"
+            class="product-image"
+          />
+        </div>
+        <div class="product-details-item">
+          <div class="breadcrumb">
+            <a href="#">Cloting</a> / <a href="#">Men's</a> /
+            <a href="#">Outerwear</a>
+          </div>
+          <h1 id="product-title"></h1>
+          <span>$ <span id="product-price"></span></span>
+
+          <p id="product-description"></p>
+          <p id="product-price"></p>
+          <button id="back-button">BACK</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 My Simple Webpage</p>
+    </footer>
+    <script src="details.js"></script>
+  </body>
+</html>

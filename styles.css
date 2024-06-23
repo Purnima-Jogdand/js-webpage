@@ -198,3 +198,44 @@ body {
   object-fit: cover;
   border-radius: 8px;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .left-container,
+  .right-container {
+    width: 100%;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+  gap: 20px; /* Adjust the space between columns as needed */
+  padding: 20px;
+}
+
+.product-details-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  font-size: 1em;
+}

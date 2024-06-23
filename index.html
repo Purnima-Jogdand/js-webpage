@@ -32,6 +32,7 @@
     </header>
     <main>
       <div class="container">
+
         <div class="left-container">
           <div class="square">
             <h1>
@@ -45,29 +46,42 @@
           </div>
         </div>
         <div class="right-container">
+            
           <div class="brand-image">
             <h1>
               Men's <br />
               Outerwear catlog
             </h1>
+                     <div class="container">
+      <!-- Other content here -->
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="Search products..." />
+        <select id="sort-select">
+          <option value="default">Sort by</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="title-asc">Title: A-Z</option>
+          <option value="title-desc">Title: Z-A</option>
+        </select>
+      </div>
+ 
+ 
+    </div>
                 <div class="product-list">
                 <!-- Product item template -->
-                <div class="product-item">
-                    <img src="" alt="Product Image" class="product-image">
-                    <h3 class="title"></h3>
-                    <!-- <div class="details">
-                        <h3 class="title">Product Title</h3>
-                        <p class="price">$0.00</p>
-                        <p class="description">Product description goes here.</p>
-                        <p class="category">Category</p>
-                        <div class="rating">
-                            <span class="rate">⭐ 0.0</span>
-                            <span class="count">(0 reviews)</span>
-                        </div>
-                    </div> -->
-                </div>
+              
+
+                 <div class="product-item" >
+              <img src="" alt="Product Image" class="product-image">
+              <h3 class="title"></h3>
+            </div>
                 <!-- End of product item template -->
             </div>
+                 <div class="pagination-controls">
+        <button id="prev-button">Previous</button>
+        <span id="page-info"></span>
+        <button id="next-button">Next</button>
+      </div>
         </div>
       </div>
     </main>
