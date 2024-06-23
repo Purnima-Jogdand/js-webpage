@@ -15,8 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // // Close navLinks when a link is clicked
+  // navLinksItems.forEach((link) => {
+  //   link.addEventListener("click", () => {
+  //     navLinks.classList.remove("active");
+  //   });
+  // });
+
   // Close navLinks when a link is clicked
-  navLinksItems.forEach((link) => {
+  navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("active");
     });
