@@ -239,3 +239,12 @@ body {
   padding: 10px;
   font-size: 1em;
 }
+.category-filters {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.category-filters label {
+  margin-bottom: 5px;
+}
